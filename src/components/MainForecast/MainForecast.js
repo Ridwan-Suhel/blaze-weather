@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 const MainForecast = () => {
   const [fetchWeather, setFetchWeather] = useState(null);
   const [search, setSearch] = useState("");
+  const [imgIcon, setImgIcon] = useState("");
+
+  // const img = ``;
+  // const img = fetchWeather?.weather[0];
 
   // let dt = new Date(fetchWeather.dt * 1000); //timestamp * 1000
   // let sr = new Date(day.sunrise * 1000).toTimeString();
@@ -15,14 +19,21 @@ const MainForecast = () => {
   useEffect(() => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${
       search || "dhaka"
-    }&appid=2199f6775906f518de6705db5a71c1b8&units=metric`;
+    }&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
 
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => setFetchWeather(data));
+    const fetchData = async () => {
+      await fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setFetchWeather(data);
+          setImgIcon(data?.weather[0]?.icon);
+        });
+    };
+    fetchData();
   }, [search]);
 
   console.log(fetchWeather);
+  console.log(imgIcon);
   let days = [
     "Sunday",
     "Monday",
@@ -33,7 +44,7 @@ const MainForecast = () => {
     "Saturday",
   ];
 
-  let d = new Date(fetchWeather?.dt * 1000);
+  let d = new Date((fetchWeather?.dt + fetchWeather?.timezone) * 1000);
   let dayName = days[d.getDay()];
 
   let hours = d.getHours();
@@ -43,8 +54,9 @@ const MainForecast = () => {
   hours = hours ? hours : 12;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   let strTime = hours + ":" + minutes + " " + ampm;
+
   console.log(strTime);
-  console.log(d);
+  // console.log(d);
 
   return (
     <aside className="main-forecast w-1/4 bg-white shadow min-h-screen rounded">
@@ -64,11 +76,11 @@ const MainForecast = () => {
           <h2 className="text-center text-lg mt-5 text-rose-600">
             {fetchWeather.message}
           </h2>
-          <div className="forecast-detail px-4">
+          <div className="forecast-detail px-4 overflow-x-hidden">
             <div className="w-img">
               <img
-                className="w-[150px]"
-                src="http://openweathermap.org/img/wn/10d@2x.png"
+                className="ml-[-20px]"
+                src={`http://openweathermap.org/img/wn/${imgIcon}@4x.png`}
                 alt="img"
               />
             </div>
