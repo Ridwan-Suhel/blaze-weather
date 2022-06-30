@@ -3,11 +3,14 @@ import {
   CloudIcon,
   SearchCircleIcon,
 } from "@heroicons/react/outline";
+import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
 const MainForecast = () => {
   const [fetchWeather, setFetchWeather] = useState(null);
   const [search, setSearch] = useState("");
-  const [imgIcon, setImgIcon] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState("");
+  const [localDate, setLocalDate] = useState(0);
+  const [timeZone, setTimeZone] = useState(0);
 
   // const img = ``;
   // const img = fetchWeather?.weather[0];
@@ -26,14 +29,16 @@ const MainForecast = () => {
         .then((res) => res.json())
         .then((data) => {
           setFetchWeather(data);
-          setImgIcon(data?.weather[0]?.icon);
+          setWeatherInfo(data?.weather[0]);
+          setLocalDate(fetchWeather?.dt);
+          setTimeZone(fetchWeather?.timezone);
         });
     };
     fetchData();
-  }, [search]);
+  }, [search, fetchWeather?.dt, fetchWeather?.timezone]);
 
   console.log(fetchWeather);
-  console.log(imgIcon);
+
   let days = [
     "Sunday",
     "Monday",
@@ -44,7 +49,7 @@ const MainForecast = () => {
     "Saturday",
   ];
 
-  let d = new Date((fetchWeather?.dt + fetchWeather?.timezone) * 1000);
+  let d = new Date(localDate * 1000);
   let dayName = days[d.getDay()];
 
   let hours = d.getHours();
@@ -55,8 +60,8 @@ const MainForecast = () => {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   let strTime = hours + ":" + minutes + " " + ampm;
 
-  console.log(strTime);
-  // console.log(d);
+  let descTxt = weatherInfo?.description;
+  const desc = descTxt?.charAt(0)?.toUpperCase() + descTxt?.slice(1);
 
   return (
     <aside className="main-forecast w-1/4 bg-white shadow min-h-screen rounded">
@@ -79,13 +84,13 @@ const MainForecast = () => {
           <div className="forecast-detail px-4 overflow-x-hidden">
             <div className="w-img">
               <img
-                className="ml-[-20px]"
-                src={`http://openweathermap.org/img/wn/${imgIcon}@4x.png`}
+                className="ml-[-45px] mt-[-45px]"
+                src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@4x.png`}
                 alt="img"
               />
             </div>
 
-            <h2 className="text-5xl font-light mt-6">
+            <h2 className="text-5xl font-light mt-[-15px]">
               {fetchWeather?.main?.temp}&deg;<span className="text-3xl">C</span>
             </h2>
 
@@ -104,9 +109,21 @@ const MainForecast = () => {
                 <span>Cloudy - {fetchWeather?.clouds?.all}%</span>
               </div>
             </div>
-            <h2 className="text-xl font-light mt-6 bg-black p-5 text-white text-right rounded-lg">
-              {fetchWeather?.name}
-            </h2>
+            <div className="font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden">
+              <h2>
+                Weather Information:{" "}
+                <span className="text-gray-300">{weatherInfo?.main}</span>
+              </h2>
+              <h2 className="text-gray-300">{desc}</h2>
+              <h2 className="text-xl font-light text-right ">
+                {fetchWeather?.name} - <span>{fetchWeather?.sys?.country}</span>
+              </h2>
+              <img
+                src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@2x.png`}
+                alt="img"
+                className="absolute top-[-10px] right-[-10px]"
+              />
+            </div>
           </div>
         </>
       )}
