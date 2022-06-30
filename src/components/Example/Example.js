@@ -5,7 +5,50 @@ import {
 } from "@heroicons/react/outline";
 import { DateTime } from "luxon";
 import { useEffect, useState } from "react";
-const MainForecast = ({ fetchWeather, setSearch, weatherInfo }) => {
+const MainForecast = () => {
+  const [fetchWeather, setFetchWeather] = useState(null);
+  const [search, setSearch] = useState("");
+  const [weatherInfo, setWeatherInfo] = useState("");
+  const [localDate, setLocalDate] = useState(0);
+  const [timeZone, setTimeZone] = useState(0);
+
+  const [lat, setLat] = useState("");
+  const [lon, setLon] = useState("");
+
+  const img = fetchWeather?.weather[0];
+
+  // let dt = new Date(fetchWeather.dt * 1000);
+  // let sr = new Date(day.sunrise * 1000).toTimeString();
+  // let ss = new Date(day.sunset * 1000).toTimeString();
+
+  useEffect(() => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${
+      search || "dhaka"
+    }&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+
+    const fetchData = async () => {
+      await fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+          setFetchWeather(data);
+          setWeatherInfo(data?.weather[0]);
+          setLocalDate(fetchWeather?.dt);
+          setTimeZone(fetchWeather?.timezone);
+          setLat(fetchWeather?.coord?.lat);
+          setLon(fetchWeather?.coord?.lon);
+        });
+    };
+    fetchData();
+  }, [
+    search,
+    fetchWeather?.dt,
+    fetchWeather?.timezone,
+    fetchWeather?.coord?.lat,
+    fetchWeather?.coord?.lon,
+  ]);
+
+  console.log(fetchWeather);
+
   let days = [
     "Sunday",
     "Monday",
@@ -16,7 +59,7 @@ const MainForecast = ({ fetchWeather, setSearch, weatherInfo }) => {
     "Saturday",
   ];
 
-  let d = new Date(fetchWeather?.dt * 1000);
+  let d = new Date(localDate * 1000);
   let dayName = days[d.getDay()];
 
   let hours = d.getHours();
@@ -51,7 +94,7 @@ const MainForecast = ({ fetchWeather, setSearch, weatherInfo }) => {
           <div className="forecast-detail px-4 overflow-x-hidden">
             <div className="w-img">
               <img
-                className="ml-[-35px] mt-[-35px]"
+                className="ml-[-45px] mt-[-45px]"
                 src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@4x.png`}
                 alt="img"
               />
@@ -79,7 +122,7 @@ const MainForecast = ({ fetchWeather, setSearch, weatherInfo }) => {
             <div className="font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden">
               <h2>
                 Weather Information:{" "}
-                <span className="text-gray-300">{weatherInfo?.main},</span>
+                <span className="text-gray-300">{weatherInfo?.main}</span>
               </h2>
               <h2 className="text-gray-300">{desc}</h2>
               <h2 className="text-xl font-light text-right ">
