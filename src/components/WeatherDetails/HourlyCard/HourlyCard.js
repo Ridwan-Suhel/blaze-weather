@@ -1,7 +1,7 @@
 import React from "react";
 
 const HourlyCard = ({ data }) => {
-  console.log(data);
+  // console.log(data);
 
   // =====================DATE & TIME======================
   let d = new Date(data?.dt * 1000);

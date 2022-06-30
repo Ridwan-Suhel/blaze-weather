@@ -8,6 +8,7 @@ const WeatherDetails = ({ fetchWeather }) => {
   const [dataHourly, setDataHourly] = useState({});
   const [dataDaily, setDataDaily] = useState({});
   const [loading, setLoading] = useState(false);
+  const [activeClass, setActiveClass] = useState(true);
 
   const lat = fetchWeather?.coord?.lat;
   const lon = fetchWeather?.coord?.lon;
@@ -26,8 +27,8 @@ const WeatherDetails = ({ fetchWeather }) => {
     loadData();
   }, [lat, lon]);
 
-  console.log(dataHourly);
-  console.log(dataDaily);
+  // console.log(dataHourly);
+  // console.log(dataDaily);
 
   return (
     <div className="main-weather-details w-3/4">
@@ -35,17 +36,24 @@ const WeatherDetails = ({ fetchWeather }) => {
         <ul className="w-modes  flex justify-between items-center gap-5">
           {/* <li>Today</li> */}
           <button
-            onClick={() => setToggleState(true)}
-            // className="font-light text-lg text-black-900"
-            className={` ${
-              toggleState && "font-bold"
+            onClick={() => {
+              setToggleState(true);
+              setActiveClass(true);
+            }}
+            className={`${
+              activeClass ? "font-bold border-b-2 border-black" : ""
             } font-light text-lg text-black-900`}
           >
             Today
           </button>
           <button
-            onClick={() => setToggleState(false)}
-            className="font-light text-lg text-black-900"
+            onClick={() => {
+              setToggleState(false);
+              setActiveClass(false);
+            }}
+            className={` ${
+              activeClass ? "" : "font-bold border-b-2 border-black"
+            } font-light text-lg text-black-900`}
           >
             Week
           </button>
@@ -59,8 +67,10 @@ const WeatherDetails = ({ fetchWeather }) => {
       {loading ? (
         <div className="w-single-card-wrpper grid grid-cols-5 gap-4">
           {toggleState
-            ? dataHourly?.map((data) => <HourlyCard data={data} />)
-            : dataDaily?.map((data) => <DailyCard data={data} />)}
+            ? dataHourly?.map((data) => (
+                <HourlyCard key={data.dt} data={data} />
+              ))
+            : dataDaily?.map((data) => <DailyCard key={data.dt} data={data} />)}
         </div>
       ) : (
         <Loading />
