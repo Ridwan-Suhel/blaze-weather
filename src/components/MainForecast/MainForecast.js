@@ -3,8 +3,6 @@ import {
   CloudIcon,
   SearchCircleIcon,
 } from "@heroicons/react/outline";
-import { DateTime } from "luxon";
-import { useEffect, useState } from "react";
 const MainForecast = ({ fetchWeather, setSearch, weatherInfo }) => {
   let days = [
     "Sunday",

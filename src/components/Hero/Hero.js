@@ -10,9 +10,7 @@ const Hero = () => {
   }&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
 
   const [fetchWeather, weatherInfo] = UseWeather(url);
-  // const [weatherInfo] = UseWeather(url);
-
-  console.log(search);
+  // console.log(fetchWeather.coord.lat);
   return (
     <section className="container mx-auto">
       <div className="w-wrapper flex justify-between my-5 gap-4">
@@ -21,7 +19,7 @@ const Hero = () => {
           setSearch={setSearch}
           weatherInfo={weatherInfo}
         />
-        <WeatherDetails />
+        <WeatherDetails fetchWeather={fetchWeather} />
       </div>
     </section>
   );
