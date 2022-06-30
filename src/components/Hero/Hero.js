@@ -9,7 +9,7 @@ const Hero = () => {
     search || "dhaka"
   }&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
 
-  const [fetchWeather, weatherInfo] = UseWeather(url);
+  const [fetchWeather, weatherInfo, isLoading] = UseWeather(url);
   // console.log(fetchWeather.coord.lat);
   return (
     <section className="container mx-auto">
@@ -17,7 +17,9 @@ const Hero = () => {
         <MainForecast
           fetchWeather={fetchWeather}
           setSearch={setSearch}
+          search={search}
           weatherInfo={weatherInfo}
+          isLoading={isLoading}
         />
         <WeatherDetails fetchWeather={fetchWeather} />
       </div>

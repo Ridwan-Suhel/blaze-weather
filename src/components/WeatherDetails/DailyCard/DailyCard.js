@@ -1,7 +1,6 @@
 import React from "react";
 
 const DailyCard = ({ data }) => {
-  console.log(data);
   // =====================DATE & TIME======================
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let d = new Date(data?.dt * 1000);

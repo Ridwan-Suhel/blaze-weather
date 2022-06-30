@@ -21,8 +21,6 @@ const WeatherDetails = ({ fetchWeather }) => {
   const lat = fetchWeather?.coord?.lat;
   const lon = fetchWeather?.coord?.lon;
 
-  console.log(dataDaily[0]);
-
   // =====================DATE & TIME======================
   let riseD = new Date(dataDaily[0]?.sunrise * 1000);
 
@@ -33,7 +31,6 @@ const WeatherDetails = ({ fetchWeather }) => {
   riseHours = riseHours ? riseHours : 12;
   riseMinutes = riseMinutes < 10 ? "0" + riseMinutes : riseMinutes;
   let riseStrTime = riseHours + ":" + riseMinutes + " " + riseAmpm;
-  console.log(riseStrTime, "Sunrise");
   // =====================DATE & TIME END======================
 
   // =====================DATE & TIME======================
@@ -46,7 +43,6 @@ const WeatherDetails = ({ fetchWeather }) => {
   hours = hours ? hours : 12;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   let strTime = hours + ":" + minutes + " " + ampm;
-  console.log(strTime, "Sunset");
   // =====================DATE & TIME END======================
 
   useEffect(() => {
@@ -62,9 +58,6 @@ const WeatherDetails = ({ fetchWeather }) => {
     };
     loadData();
   }, [lat, lon]);
-
-  // console.log(dataHourly);
-  // console.log(dataDaily);
 
   return (
     <div className="main-weather-details w-3/4">

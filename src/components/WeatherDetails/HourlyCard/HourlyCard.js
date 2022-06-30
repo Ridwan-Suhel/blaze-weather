@@ -1,11 +1,8 @@
 import React from "react";
 
 const HourlyCard = ({ data }) => {
-  // console.log(data);
-
   // =====================DATE & TIME======================
   let d = new Date(data?.dt * 1000);
-  // let dayName = days[d.getDay()];
 
   let hours = d.getHours();
   let minutes = d.getMinutes();
