@@ -10,6 +10,7 @@ import sunset from "../../../src/images/png/004-sea.png";
 import humidity from "../../../src/images/png/005-humidity.png";
 import pressure from "../../../src/images/png/006-atmospheric.png";
 import dew from "../../../src/images/png/dew.png";
+import TopBarWea from "./TopBarWea/TopBarWea";
 
 const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [toggleState, setToggleState] = useState(true);
@@ -64,7 +65,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
 
   return (
     <div className="main-weather-details w-3/4">
-      <div className="top-bar flex justify-between items-center pb-4 pt-1">
+      {/* <div className="top-bar flex justify-between items-center pb-4 pt-1">
         <ul className="w-modes  flex justify-between items-center gap-5">
           <button
             onClick={() => {
@@ -117,7 +118,16 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
             &deg;F
           </button>
         </ul>
-      </div>
+      </div> */}
+
+      <TopBarWea
+        unitActiveClass={unitActiveClass}
+        setToggleState={setToggleState}
+        setUnitActiveClass={setUnitActiveClass}
+        setActiveClass={setActiveClass}
+        activeClass={activeClass}
+        setUnit={setUnit}
+      />
 
       {loading ? (
         <div className="w-single-card-wrpper grid grid-cols-5 gap-4">

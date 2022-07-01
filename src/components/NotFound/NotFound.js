@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <div>
       <img
-        className="w-[150px] mx-auto object-cover]"
+        className="w-[150px] mx-auto object-cover] rounded-full mt-5"
         src={notFoundData}
         alt="Data Not Found"
       />
