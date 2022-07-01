@@ -11,7 +11,7 @@ import humidity from "../../../src/images/png/005-humidity.png";
 import pressure from "../../../src/images/png/006-atmospheric.png";
 import dew from "../../../src/images/png/dew.png";
 
-const WeatherDetails = ({ fetchWeather }) => {
+const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [toggleState, setToggleState] = useState(true);
   const [dataHourly, setDataHourly] = useState({});
   const [dataDaily, setDataDaily] = useState({});
@@ -46,7 +46,9 @@ const WeatherDetails = ({ fetchWeather }) => {
   // =====================DATE & TIME END======================
 
   useEffect(() => {
-    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${
+      process.env.REACT_APP_API_KEY
+    }&units=${unit || "metric"}`;
     const loadData = async () => {
       await fetch(url)
         .then((res) => res.json())
@@ -57,13 +59,12 @@ const WeatherDetails = ({ fetchWeather }) => {
         });
     };
     loadData();
-  }, [lat, lon]);
+  }, [lat, lon, unit]);
 
   return (
     <div className="main-weather-details w-3/4">
-      <div className="top-bar flex justify-between items-center pb-4 pt-3">
+      <div className="top-bar flex justify-between items-center pb-4 pt-1">
         <ul className="w-modes  flex justify-between items-center gap-5">
-          {/* <li>Today</li> */}
           <button
             onClick={() => {
               setToggleState(true);
@@ -87,9 +88,23 @@ const WeatherDetails = ({ fetchWeather }) => {
             Week
           </button>
         </ul>
-        <ul className="w-units  flex justify-between items-center gap-5">
-          <li>&deg;F</li>
-          <li>&deg;C</li>
+        <ul className="w-units  flex justify-between items-center gap-2">
+          <button
+            onClick={() => {
+              setUnit("metric");
+            }}
+            className="text-white bg-black w-[35px] h-[35px] text-center rounded-full"
+          >
+            &deg;C
+          </button>
+          <button
+            onClick={() => {
+              setUnit("imperial");
+            }}
+            className="text-white bg-black w-[35px] h-[35px] text-center rounded-full"
+          >
+            &deg;F
+          </button>
         </ul>
       </div>
 

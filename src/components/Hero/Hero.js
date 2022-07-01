@@ -5,12 +5,13 @@ import WeatherDetails from "../WeatherDetails/WeatherDetails";
 
 const Hero = () => {
   const [search, setSearch] = useState("");
+  const [unit, setUnit] = useState("");
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${
     search || "dhaka"
-  }&appid=${process.env.REACT_APP_API_KEY}&units=metric`;
+  }&appid=${process.env.REACT_APP_API_KEY}&units=${unit || "metric"}`;
 
   const [fetchWeather, weatherInfo, isLoading] = UseWeather(url);
-  // console.log(fetchWeather.coord.lat);
+  // console.log(unit);
   return (
     <section className="container mx-auto">
       <div className="w-wrapper flex justify-between my-5 gap-4">
@@ -21,7 +22,11 @@ const Hero = () => {
           weatherInfo={weatherInfo}
           isLoading={isLoading}
         />
-        <WeatherDetails fetchWeather={fetchWeather} />
+        <WeatherDetails
+          setUnit={setUnit}
+          unit={unit}
+          fetchWeather={fetchWeather}
+        />
       </div>
     </section>
   );
