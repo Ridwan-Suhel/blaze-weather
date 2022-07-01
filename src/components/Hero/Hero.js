@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import UseWeather from "../../Hooks/UseWeather/UseWeather";
 import MainForecast from "../MainForecast/MainForecast";
 import WeatherDetails from "../WeatherDetails/WeatherDetails";
@@ -11,7 +11,6 @@ const Hero = () => {
   }&appid=${process.env.REACT_APP_API_KEY}&units=${unit || "metric"}`;
 
   const [fetchWeather, weatherInfo, isLoading] = UseWeather(url);
-  // console.log(unit);
   return (
     <section className="container mx-auto">
       <div className="w-wrapper flex justify-between my-5 gap-4">

@@ -9,7 +9,9 @@ const NotFound = () => {
         src={notFoundData}
         alt="Data Not Found"
       />
-      <h2 className="text-center text-2xl font-light ">Oops! No City Found.</h2>
+      <h2 className="text-center mt-4 text-2xl font-light dark:text-white  ">
+        Oops! No City Found.
+      </h2>
     </div>
   );
 };

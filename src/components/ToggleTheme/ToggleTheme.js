@@ -10,12 +10,12 @@ const ToggleTheme = () => {
       className="flex justify-between items-center gap-2"
     >
       {colorTheme === "light" ? (
-        <button>
-          <SunIcon className="h-5 w-5 text-yellow-900 hover:scale-125 transition" />
+        <button title="Change Dark Mode">
+          <SunIcon className="h-7 w-7 dark:text-white hover:scale-125 transition" />
         </button>
       ) : (
-        <button>
-          <MoonIcon className="h-5 w-5 text-slate-400 hover:scale-125 transition" />
+        <button title="Change Light Mode">
+          <MoonIcon className="h-7 w-7 text-black hover:scale-125 transition" />
         </button>
       )}
     </ul>

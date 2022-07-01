@@ -14,7 +14,7 @@ const HourlyCard = ({ data, unitActiveClass }) => {
   // =====================DATE & TIME END======================
 
   return (
-    <div className="card p-4 rounded-lg shadow text-center bg-white">
+    <div className="card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300">
       {/* <h2 className="text-xl">12:00 AM</h2> */}
       <h2 className="text-xl">{strTime}</h2>
       <div className="w-img text-center my-4">

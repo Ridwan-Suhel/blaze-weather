@@ -63,6 +63,9 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
     loadData();
   }, [lat, lon, unit]);
 
+  const darkThemeBoxColor =
+    "dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300";
+
   return (
     <div className="main-weather-details w-3/4">
       <TopBarWea
@@ -97,33 +100,45 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
       )}
 
       <div className="highlights-area my-5">
-        <h2 className="text-xl font-medium text-black">Today's Highlights</h2>
+        <h2 className="text-xl font-medium text-black dark:text-slate-300">
+          Today's Highlights
+        </h2>
 
         <div className="grid grid-cols-3 gap-4 mt-5">
           {/* single box  */}
-          <div className="box p-4 rounded-lg shadow bg-white">
-            <h2 className="text-lg text-slate-500 font-medium">UV Index</h2>
+          <div
+            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+          >
+            <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
+              UV Index
+            </h2>
             <div className="mt-5 flex items-center gap-2">
               <img className="w-[30px] object-cover" src={uvi} alt="Uvi" />
-              <h2 className="text-3xl text-slate-900 font-medium">
+              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.uvi}
               </h2>
             </div>
           </div>
           {/* single box  */}
-          <div className="box p-4 rounded-lg shadow bg-white">
-            <h2 className="text-lg text-slate-500 font-medium">Wind Status</h2>
+          <div
+            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+          >
+            <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
+              Wind Status
+            </h2>
             <div className="mt-5 flex items-center gap-2">
               <img className="w-[30px] object-cover" src={wind} alt="wind" />
-              <h2 className="text-3xl text-slate-900 font-medium">
+              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.wind_speed}
                 <sub className="text-[14px] text-slate-500">KM/h</sub>
               </h2>
             </div>
           </div>
           {/* single box  */}
-          <div className="box p-4 rounded-lg shadow bg-white">
-            <h2 className="text-lg text-slate-500 font-medium">
+          <div
+            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+          >
+            <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               Sunrise &amp; Sunset
             </h2>
             <div className="mt-5 flex items-center gap-2">
@@ -132,7 +147,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
                 src={sunrise}
                 alt="sunrise"
               />
-              <h2 className="text-xl text-slate-900 font-medium">
+              <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
                 {riseStrTime}
               </h2>
             </div>
@@ -142,45 +157,59 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
                 src={sunset}
                 alt="sunset"
               />
-              <h2 className="text-xl text-slate-900 font-medium">{strTime}</h2>
+              <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
+                {strTime}
+              </h2>
             </div>
           </div>
           {/* single box  */}
-          <div className="box p-4 rounded-lg shadow bg-white">
-            <h2 className="text-lg text-slate-500 font-medium">Humidity</h2>
+          <div
+            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+          >
+            <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
+              Humidity
+            </h2>
             <div className="mt-5 flex items-center gap-2">
               <img
                 className="w-[30px] object-cover"
                 src={humidity}
                 alt="humidity"
               />
-              <h2 className="text-3xl text-slate-900 font-medium">
+              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.humidity}
                 <span className="text-xl">%</span>
               </h2>
             </div>
           </div>
           {/* single box  */}
-          <div className="box p-4 rounded-lg shadow bg-white">
-            <h2 className="text-lg text-slate-500 font-medium">Pressure</h2>
+          <div
+            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+          >
+            <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
+              Pressure
+            </h2>
             <div className="mt-5 flex items-center gap-2">
               <img
                 className="w-[30px] object-cover"
                 src={pressure}
                 alt="pressure"
               />
-              <h2 className="text-3xl text-slate-900 font-medium">
+              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.pressure}
                 <span className="text-xl font-light">hPa</span>
               </h2>
             </div>
           </div>
           {/* single box  */}
-          <div className="box p-4 rounded-lg shadow bg-white">
-            <h2 className="text-lg text-slate-500 font-medium">Dew Point</h2>
+          <div
+            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+          >
+            <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
+              Dew Point
+            </h2>
             <div className="mt-5 flex items-center gap-2">
               <img className="w-[30px] object-cover" src={dew} alt="dew" />
-              <h2 className="text-3xl text-slate-900 font-medium">
+              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.dew_point}
                 <span className="text-xl font-light">KM</span>
               </h2>

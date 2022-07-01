@@ -40,13 +40,18 @@ const MainForecast = ({
 
   const isFetched = fetchWeather?.cod === "404";
   return (
-    <aside className="main-forecast w-1/4 bg-white shadow min-h-screen rounded">
-      <div className="form-group flex items-center bg-base-100 px-4 py-1 border-b">
-        <SearchCircleIcon className="h-5 w-5 text-slate-500 rotate-[-90deg]" />
+    <aside className="main-forecast w-1/4 bg-white shadow min-h-screen rounded dark:bg-black dark:shadow-slate-500">
+      <div className="form-group flex items-center bg-base-100 px-4 py-1 border-b dark:border-slate-500">
+        <label htmlFor="searchInput">
+          <SearchCircleIcon className="h-5 w-5 text-slate-500 rotate-[-90deg]" />
+        </label>
+
         <input
+          title="Write Your City Name Here"
+          id="searchInput"
           type="text"
           placeholder="Search Place Here..."
-          className=" py-1 px-2 text-lg w-full text-slate-500 focus:outline-none bg-transparent"
+          className=" py-1 px-2 text-lg w-full text-slate-500 focus:outline-none bg-transparent dark:text-white"
           autoFocus={true}
           onChange={(e) => {
             const searchTxt = e.target.value;
@@ -59,9 +64,10 @@ const MainForecast = ({
       {isLoading ? (
         <>
           {!isFetched ? (
-            <div className="forecast-detail px-4 overflow-x-hidden">
+            <div className="forecast-detail px-4 overflow-x-hidden dark:text-white">
               <div className="w-img">
                 <img
+                  title={`Current weather is - ${weatherInfo?.main}`}
                   className="ml-[-35px] mt-[-35px]"
                   src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@4x.png`}
                   alt="img"
@@ -77,10 +83,12 @@ const MainForecast = ({
 
               <h2 className="text-2xl font-normal my-6">
                 {dayName},{" "}
-                <span className="text-slate-500 font-light">{strTime}</span>
+                <span className="text-slate-500 font-light dark:text-slate-200">
+                  {strTime}
+                </span>
               </h2>
 
-              <div className="more-info text-slate-500">
+              <div className="more-info text-slate-500 dark:text-slate-400">
                 <div className="flex items-center gap-3">
                   <BeakerIcon className="h-5 w-5" />{" "}
                   <span>
@@ -93,7 +101,7 @@ const MainForecast = ({
                   <span>Cloudy - {fetchWeather?.clouds?.all}%</span>
                 </div>
               </div>
-              <div className="font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden">
+              <div className="font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden dark:bg-slate-900">
                 <h2>
                   Weather Information:{" "}
                   <span className="text-gray-300">{weatherInfo?.main},</span>
