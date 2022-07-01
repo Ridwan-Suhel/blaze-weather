@@ -3,10 +3,14 @@ import { MoonIcon, SunIcon } from "@heroicons/react/outline";
 import UseDarkMode from "../../Hooks/UseDarkMode/UseDarkMode";
 
 const ToggleTheme = () => {
-  const [setTheme, colorTheme] = UseDarkMode();
+  const [setTheme, colorTheme, setDark, isDark] = UseDarkMode();
+  console.log(isDark);
   return (
     <ul
-      onClick={() => setTheme(colorTheme)}
+      onClick={() => {
+        setTheme(colorTheme);
+        setDark(!isDark);
+      }}
       className="flex justify-between items-center gap-2"
     >
       {colorTheme === "light" ? (

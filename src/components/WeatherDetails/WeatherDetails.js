@@ -11,6 +11,7 @@ import humidity from "../../../src/images/png/005-humidity.png";
 import pressure from "../../../src/images/png/006-atmospheric.png";
 import dew from "../../../src/images/png/dew.png";
 import TopBarWea from "./TopBarWea/TopBarWea";
+import UseDarkMode from "../../Hooks/UseDarkMode/UseDarkMode";
 
 const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [toggleState, setToggleState] = useState(true);
@@ -19,6 +20,9 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [loading, setLoading] = useState(false);
   const [activeClass, setActiveClass] = useState(true);
   const [unitActiveClass, setUnitActiveClass] = useState(true);
+
+  //trying to hcnage the card box image icon on dark mode
+  const [setTheme, colorTheme, setDark, isDark] = UseDarkMode();
 
   const lat = fetchWeather?.coord?.lat;
   const lon = fetchWeather?.coord?.lon;

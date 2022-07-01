@@ -1,11 +1,25 @@
-.logo {
+.light .logo {
   background: rgb(28, 109, 234);
-  background: rgb(0, 0, 0);
   background: linear-gradient(
     120deg,
     rgba(0, 0, 0, 1) 38%,
     rgba(250, 250, 250, 1) 51%,
     rgba(17, 17, 17, 1) 63%
+  );
+  background-size: 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animate 10s linear infinite, flicker 5s linear infinite;
+}
+
+.dark .logo {
+  background: rgb(28, 109, 234);
+  background: linear-gradient(
+    120deg,
+    rgba(250, 250, 250, 1) 38%,
+    rgb(15, 23, 42, 0.4) 51%,
+    rgb(238, 238, 238) 63%
   );
   background-size: 400%;
   background-clip: text;
