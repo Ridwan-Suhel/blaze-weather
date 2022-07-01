@@ -1,5 +1,7 @@
 import React from "react";
 
+import ToggleTheme from "../../ToggleTheme/ToggleTheme";
+
 const TopBarWea = ({
   unitActiveClass,
   setToggleState,
@@ -10,7 +12,7 @@ const TopBarWea = ({
 }) => {
   return (
     <div className="top-bar flex justify-between items-center pb-4 pt-1">
-      <ul className="w-modes  flex justify-between items-center gap-5">
+      <ul className="w-modes flex justify-between items-center gap-5">
         <button
           onClick={() => {
             setToggleState(true);
@@ -18,7 +20,7 @@ const TopBarWea = ({
           }}
           className={`${
             activeClass ? "font-bold border-b-2 border-black" : ""
-          } font-light text-lg text-black-900`}
+          } font-light text-lg text-black-900 dark:text-white`}
         >
           Today
         </button>
@@ -34,6 +36,7 @@ const TopBarWea = ({
           Week
         </button>
       </ul>
+
       <ul className="w-units  flex justify-between items-center gap-2">
         <button
           onClick={() => {
@@ -62,6 +65,8 @@ const TopBarWea = ({
           &deg;F
         </button>
       </ul>
+
+      <ToggleTheme />
     </div>
   );
 };
