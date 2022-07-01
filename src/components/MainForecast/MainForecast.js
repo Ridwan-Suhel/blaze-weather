@@ -11,6 +11,7 @@ const MainForecast = ({
   setSearch,
   weatherInfo,
   isLoading,
+  unit,
 }) => {
   // =====================DATE & TIME======================
   let days = [
@@ -65,7 +66,9 @@ const MainForecast = ({
 
               <h2 className="text-5xl font-light mt-[-15px]">
                 {fetchWeather?.main?.temp}&deg;
-                <span className="text-3xl">C</span>
+                <span className="text-3xl">
+                  {unit === "metric" || unit === "" ? "C" : "F"}
+                </span>
               </h2>
 
               <h2 className="text-2xl font-normal my-6">
@@ -76,7 +79,10 @@ const MainForecast = ({
               <div className="more-info text-slate-500">
                 <div className="flex items-center gap-3">
                   <BeakerIcon className="h-5 w-5" />{" "}
-                  <span>Feels Like {fetchWeather?.main?.feels_like}&deg;C</span>
+                  <span>
+                    Feels Like {fetchWeather?.main?.feels_like}&deg;
+                    {unit === "metric" || unit === "" ? "C" : "F"}
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CloudIcon className="h-5 w-5" />{" "}

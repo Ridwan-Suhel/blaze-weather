@@ -21,6 +21,7 @@ const Hero = () => {
           search={search}
           weatherInfo={weatherInfo}
           isLoading={isLoading}
+          unit={unit}
         />
         <WeatherDetails
           setUnit={setUnit}

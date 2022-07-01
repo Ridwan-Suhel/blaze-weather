@@ -17,6 +17,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [dataDaily, setDataDaily] = useState({});
   const [loading, setLoading] = useState(false);
   const [activeClass, setActiveClass] = useState(true);
+  const [unitActiveClass, setUnitActiveClass] = useState(true);
 
   const lat = fetchWeather?.coord?.lat;
   const lon = fetchWeather?.coord?.lon;
@@ -92,16 +93,26 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
           <button
             onClick={() => {
               setUnit("metric");
+              setUnitActiveClass(true);
             }}
-            className="text-white bg-black w-[35px] h-[35px] text-center rounded-full"
+            className={`${
+              unitActiveClass
+                ? " bg-black text-white"
+                : "bg-[fafafa] text-black border"
+            } w-[35px] h-[35px] text-center rounded-full`}
           >
             &deg;C
           </button>
           <button
             onClick={() => {
               setUnit("imperial");
+              setUnitActiveClass(false);
             }}
-            className="text-white bg-black w-[35px] h-[35px] text-center rounded-full"
+            className={`${
+              unitActiveClass
+                ? "bg-[fafafa] text-black border"
+                : "bg-black text-white"
+            } w-[35px] h-[35px] text-center rounded-full`}
           >
             &deg;F
           </button>
@@ -112,9 +123,19 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
         <div className="w-single-card-wrpper grid grid-cols-5 gap-4">
           {toggleState
             ? dataHourly?.map((data) => (
-                <HourlyCard key={data.dt} data={data} />
+                <HourlyCard
+                  key={data.dt}
+                  data={data}
+                  unitActiveClass={unitActiveClass}
+                />
               ))
-            : dataDaily?.map((data) => <DailyCard key={data.dt} data={data} />)}
+            : dataDaily?.map((data) => (
+                <DailyCard
+                  key={data.dt}
+                  data={data}
+                  unitActiveClass={unitActiveClass}
+                />
+              ))}
         </div>
       ) : (
         <Loading />

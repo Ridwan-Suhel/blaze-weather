@@ -1,6 +1,6 @@
 import React from "react";
 
-const DailyCard = ({ data }) => {
+const DailyCard = ({ data, unitActiveClass }) => {
   // =====================DATE & TIME======================
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let d = new Date(data?.dt * 1000);
@@ -33,7 +33,8 @@ const DailyCard = ({ data }) => {
       </div>
       <div className="card-unit">
         <h2 className="text-lg">
-          {min}&deg;<sup>C</sup> - {max}&deg;<sup>C</sup>
+          {min}&deg;<sup>{unitActiveClass ? "C" : "F"}</sup> - {max}&deg;
+          <sup>{unitActiveClass ? "C" : "F"}</sup>
         </h2>
       </div>
     </div>

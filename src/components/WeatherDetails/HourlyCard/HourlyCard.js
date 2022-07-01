@@ -1,6 +1,6 @@
 import React from "react";
 
-const HourlyCard = ({ data }) => {
+const HourlyCard = ({ data, unitActiveClass }) => {
   // =====================DATE & TIME======================
   let d = new Date(data?.dt * 1000);
 
@@ -25,7 +25,9 @@ const HourlyCard = ({ data }) => {
         />
       </div>
       <div className="card-unit">
-        <h2 className="text-xl">{data?.temp}&deg; C</h2>
+        <h2 className="text-xl">
+          {data?.temp}&deg; {unitActiveClass ? "C" : "F"}
+        </h2>
       </div>
     </div>
   );
