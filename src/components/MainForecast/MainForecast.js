@@ -48,7 +48,11 @@ const MainForecast = ({
           placeholder="Search Place Here..."
           className=" py-1 px-2 text-lg w-full text-slate-500 focus:outline-none bg-transparent"
           autoFocus={true}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            const searchTxt = e.target.value;
+            const txtValue = searchTxt.toLowerCase();
+            setSearch(txtValue);
+          }}
         />
       </div>
 
