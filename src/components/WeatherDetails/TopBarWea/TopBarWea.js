@@ -25,7 +25,7 @@ const TopBarWea = ({
             activeClass
               ? "font-bold border-b-2 border-black dark:border-white"
               : ""
-          } font-light text-lg text-black-900 dark:text-white `}
+          } font-light text-lg text-black-900 transition duration-500 dark:text-white `}
         >
           Today
         </button>
@@ -39,7 +39,7 @@ const TopBarWea = ({
             activeClass
               ? ""
               : "font-bold border-b-2 border-black  dark:border-white"
-          } font-light text-lg text-black-900 dark:text-white`}
+          } font-light text-lg text-black-900 transition duration-500 dark:text-white`}
         >
           Week
         </button>

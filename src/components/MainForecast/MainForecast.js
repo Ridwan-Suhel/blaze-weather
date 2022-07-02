@@ -20,7 +20,7 @@ const MainForecast = ({
 
   const isFetched = fetchWeather?.cod === "404";
   return (
-    <aside className="main-forecast w-1/4 bg-white shadow min-h-screen rounded dark:bg-black dark:shadow-slate-500">
+    <aside className="main-forecast md:w-2/4 lg:w-1/4 bg-white shadow min-h-screen rounded dark:bg-black dark:shadow-slate-500">
       <div className="form-group flex items-center bg-base-100 px-4 py-1 border-b dark:border-slate-500">
         <label htmlFor="searchInput">
           <SearchCircleIcon className="h-5 w-5 text-slate-500 rotate-[-90deg]" />
@@ -61,19 +61,8 @@ const MainForecast = ({
                 </span>
               </h2>
 
-              {/* Geting Time  */}
-              {/* <h2 className="text-2xl font-normal my-6">
-                {dayName},{" "}
-                <span className="text-slate-500 font-light dark:text-slate-200">
-                  {strTime}
-                </span>
-              </h2> */}
               <h2 className="text-2xl font-normal my-6">
-                {/* {dayName},{" "} */}
-                {moment
-                  ?.unix(fetchWeather?.dt)
-                  ?.tz(timeZone)
-                  ?.format("dddd")}{" "}
+                {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("dddd")}{" "}
                 <span className="text-slate-500 font-light dark:text-slate-200">
                   {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("LT")}
                 </span>

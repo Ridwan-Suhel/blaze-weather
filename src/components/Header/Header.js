@@ -1,4 +1,6 @@
 import React from "react";
+import { MenuAlt1Icon } from "@heroicons/react/outline";
+
 import "./Header.css";
 
 const Header = () => {
@@ -9,11 +11,14 @@ const Header = () => {
           <h2 className="text-2xl text-white font-bold text-black logo dark:text-white">
             BlazeWeather.
           </h2>
-          <ul className="flex items-center text-white font-normal text-lg gap-5 text-black dark:text-white">
+          <ul className="hidden sm:flex items-center text-white font-normal text-lg gap-5 text-black dark:text-white">
             <li>HOME</li>
             <li>ABOUT</li>
             <li>BLOG</li>
           </ul>
+          <div className="mobile-menu block sm:hidden ">
+            <MenuAlt1Icon className="text-black w-6 h-6" />
+          </div>
         </nav>
       </div>
     </header>

@@ -2,22 +2,9 @@ import React from "react";
 import moment from "moment-timezone";
 
 const HourlyCard = ({ data, unitActiveClass, timeZone }) => {
-  // =====================DATE & TIME======================
-  let d = new Date(data?.dt * 1000);
-
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  let ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  let strTime = hours + ":" + minutes + " " + ampm;
-  // =====================DATE & TIME END======================
-
   return (
-    <div className="card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300">
-      {/* <h2 className="text-xl">{strTime}</h2> */}
-      <h2 className="text-xl">{moment?.unix(data.dt).format("LT")}</h2>
+    <div className="md:w-[150px] card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300">
+      <h2 className="text-xl">{moment?.unix(data.dt)?.format("LT")}</h2>
       <div className="w-img text-center my-4">
         <img
           src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}

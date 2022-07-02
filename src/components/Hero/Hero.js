@@ -13,8 +13,8 @@ const Hero = () => {
 
   const [fetchWeather, weatherInfo, isLoading] = UseWeather(url);
   return (
-    <section className="container mx-auto">
-      <div className="w-wrapper flex justify-between my-5 gap-4">
+    <section className="container mx-auto px-4 lg:px-0">
+      <div className="w-wrapper md:flex justify-between my-5 gap-4">
         <MainForecast
           fetchWeather={fetchWeather}
           setSearch={setSearch}

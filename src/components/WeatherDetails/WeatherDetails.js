@@ -56,7 +56,7 @@ const WeatherDetails = ({
     "dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300";
 
   return (
-    <div className="main-weather-details w-3/4">
+    <div className="main-weather-details md:w-2/4 lg:w-3/4 ">
       <TopBarWea
         unitActiveClass={unitActiveClass}
         setToggleState={setToggleState}
@@ -68,31 +68,33 @@ const WeatherDetails = ({
         isDark={isDark}
       />
 
-      {loading ? (
-        <div className="w-single-card-wrpper grid grid-cols-5 gap-4">
-          {toggleState
-            ? dataHourly?.map((data) => {
-                if (dataHourly.length > 0) {
-                  return (
-                    <HourlyCard
-                      key={data.dt}
-                      data={data}
-                      unitActiveClass={unitActiveClass}
-                    />
-                  );
-                }
-              })
-            : dataDaily?.map((data) => (
-                <DailyCard
-                  key={data.dt}
-                  data={data}
-                  unitActiveClass={unitActiveClass}
-                />
-              ))}
-        </div>
-      ) : (
-        <Loading />
-      )}
+      <div className="md:overflow-x-scroll">
+        {loading ? (
+          <div className="md:w-[800px] md:gap-1 wea-single-card-wrpper grid grid-cols-5 gap-4">
+            {toggleState
+              ? dataHourly?.map((data) => {
+                  if (dataHourly.length > 0) {
+                    return (
+                      <HourlyCard
+                        key={data.dt}
+                        data={data}
+                        unitActiveClass={unitActiveClass}
+                      />
+                    );
+                  }
+                })
+              : dataDaily?.map((data) => (
+                  <DailyCard
+                    key={data.dt}
+                    data={data}
+                    unitActiveClass={unitActiveClass}
+                  />
+                ))}
+          </div>
+        ) : (
+          <Loading />
+        )}
+      </div>
 
       <div className="highlights-area my-5">
         <h2 className="text-xl font-medium text-black dark:text-slate-300">
