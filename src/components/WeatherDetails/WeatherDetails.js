@@ -11,7 +11,6 @@ import humidity from "../../../src/images/png/005-humidity.png";
 import pressure from "../../../src/images/png/006-atmospheric.png";
 import dew from "../../../src/images/png/dew.png";
 import TopBarWea from "./TopBarWea/TopBarWea";
-import UseDarkMode from "../../Hooks/UseDarkMode/UseDarkMode";
 
 const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [toggleState, setToggleState] = useState(true);
@@ -20,9 +19,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
   const [loading, setLoading] = useState(false);
   const [activeClass, setActiveClass] = useState(true);
   const [unitActiveClass, setUnitActiveClass] = useState(true);
-
-  //trying to hcnage the card box image icon on dark mode
-  const [setTheme, colorTheme, setDark, isDark] = UseDarkMode();
+  const [isDark, setDark] = useState(true);
 
   const lat = fetchWeather?.coord?.lat;
   const lon = fetchWeather?.coord?.lon;
@@ -64,6 +61,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
           setLoading(true);
         });
     };
+
     loadData();
   }, [lat, lon, unit]);
 
@@ -79,6 +77,8 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
         setActiveClass={setActiveClass}
         activeClass={activeClass}
         setUnit={setUnit}
+        setDark={setDark}
+        isDark={isDark}
       />
 
       {loading ? (
@@ -117,7 +117,11 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
               UV Index
             </h2>
             <div className="mt-5 flex items-center gap-2">
-              <img className="w-[30px] object-cover" src={uvi} alt="Uvi" />
+              <img
+                className="w-[30px] object-cover dark:invert"
+                src={uvi}
+                alt="Uvi"
+              />
               <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.uvi}
               </h2>
@@ -131,7 +135,11 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
               Wind Status
             </h2>
             <div className="mt-5 flex items-center gap-2">
-              <img className="w-[30px] object-cover" src={wind} alt="wind" />
+              <img
+                className="w-[30px] object-cover dark:invert"
+                src={wind}
+                alt="wind"
+              />
               <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.wind_speed}
                 <sub className="text-[14px] text-slate-500">KM/h</sub>
@@ -147,7 +155,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
             </h2>
             <div className="mt-5 flex items-center gap-2">
               <img
-                className="w-[30px] object-cover"
+                className="w-[30px] object-cover dark:invert"
                 src={sunrise}
                 alt="sunrise"
               />
@@ -157,7 +165,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
             </div>
             <div className="mt-2 flex items-center gap-2">
               <img
-                className="w-[30px] object-cover"
+                className="w-[30px] object-cover dark:invert"
                 src={sunset}
                 alt="sunset"
               />
@@ -175,7 +183,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
             </h2>
             <div className="mt-5 flex items-center gap-2">
               <img
-                className="w-[30px] object-cover"
+                className="w-[30px] object-cover dark:invert"
                 src={humidity}
                 alt="humidity"
               />
@@ -194,7 +202,7 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
             </h2>
             <div className="mt-5 flex items-center gap-2">
               <img
-                className="w-[30px] object-cover"
+                className="w-[30px] object-cover dark:invert"
                 src={pressure}
                 alt="pressure"
               />
@@ -212,7 +220,11 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
               Dew Point
             </h2>
             <div className="mt-5 flex items-center gap-2">
-              <img className="w-[30px] object-cover" src={dew} alt="dew" />
+              <img
+                className="w-[30px] object-cover dark:invert"
+                src={dew}
+                alt="dew"
+              />
               <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.dew_point}
                 <span className="text-xl font-light">KM</span>

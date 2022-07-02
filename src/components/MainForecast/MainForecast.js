@@ -75,7 +75,7 @@ const MainForecast = ({
               </div>
 
               <h2 className="text-5xl font-light mt-[-15px]">
-                {fetchWeather?.main?.temp}&deg;
+                {fetchWeather?.main?.temp.toFixed()}&deg;
                 <span className="text-3xl">
                   {unit === "metric" || unit === "" ? "C" : "F"}
                 </span>

@@ -9,6 +9,8 @@ const TopBarWea = ({
   setActiveClass,
   activeClass,
   setUnit,
+  setDark,
+  isDark,
 }) => {
   return (
     <div className="top-bar flex justify-between items-center pb-4 pt-1">
@@ -74,7 +76,7 @@ const TopBarWea = ({
         </button>
       </ul>
 
-      <ToggleTheme />
+      <ToggleTheme setDark={setDark} isDark={isDark} />
     </div>
   );
 };

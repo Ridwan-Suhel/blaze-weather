@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { MoonIcon, SunIcon } from "@heroicons/react/outline";
 import UseDarkMode from "../../Hooks/UseDarkMode/UseDarkMode";
 
-const ToggleTheme = () => {
-  const [setTheme, colorTheme, setDark, isDark] = UseDarkMode();
-  console.log(isDark);
+const ToggleTheme = ({ setDark, isDark }) => {
+  const [setTheme, colorTheme] = UseDarkMode();
+
   return (
     <ul
       onClick={() => {
