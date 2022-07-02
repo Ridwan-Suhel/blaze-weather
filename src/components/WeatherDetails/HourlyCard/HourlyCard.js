@@ -3,7 +3,7 @@ import moment from "moment-timezone";
 
 const HourlyCard = ({ data, unitActiveClass, timeZone }) => {
   return (
-    <div className="md:w-[150px] card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300">
+    <div className="transition-all duration-500 md:w-[150px] card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300">
       <h2 className="text-xl">{moment?.unix(data.dt)?.format("LT")}</h2>
       <div className="w-img text-center my-4">
         <img

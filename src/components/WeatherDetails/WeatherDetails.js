@@ -68,9 +68,9 @@ const WeatherDetails = ({
         isDark={isDark}
       />
 
-      <div className="md:overflow-x-scroll">
+      <div className="overflow-x-scroll lg:overflow-x-auto">
         {loading ? (
-          <div className="md:w-[800px] md:gap-1 wea-single-card-wrpper grid grid-cols-5 gap-4">
+          <div className="w-[800px] lg:w-full md:gap-1 wea-single-card-wrpper grid grid-cols-5 gap-4 py-4">
             {toggleState
               ? dataHourly?.map((data) => {
                   if (dataHourly.length > 0) {
@@ -101,7 +101,7 @@ const WeatherDetails = ({
           Today's Highlights
         </h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
           {/* single box  */}
           <div
             className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
@@ -115,7 +115,7 @@ const WeatherDetails = ({
                 src={uvi}
                 alt="Uvi"
               />
-              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
+              <h2 className="sm:text-3xl text-xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.uvi}
               </h2>
             </div>
@@ -133,7 +133,7 @@ const WeatherDetails = ({
                 src={wind}
                 alt="wind"
               />
-              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
+              <h2 className="sm:text-3xl text-xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.wind_speed}
                 <sub className="text-[14px] text-slate-500">KM/h</sub>
               </h2>
@@ -180,7 +180,7 @@ const WeatherDetails = ({
                 src={humidity}
                 alt="humidity"
               />
-              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
+              <h2 className="sm:text-3xl text-xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.humidity}
                 <span className="text-xl">%</span>
               </h2>
@@ -199,7 +199,7 @@ const WeatherDetails = ({
                 src={pressure}
                 alt="pressure"
               />
-              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
+              <h2 className="sm:text-3xl text-xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.pressure}
                 <span className="text-xl font-light">hPa</span>
               </h2>
@@ -218,7 +218,7 @@ const WeatherDetails = ({
                 src={dew}
                 alt="dew"
               />
-              <h2 className="text-3xl text-slate-900 font-medium dark:text-slate-300">
+              <h2 className="sm:text-3xl text-xl text-slate-900 font-medium dark:text-slate-300">
                 {dataDaily[0]?.dew_point}
                 <span className="text-xl font-light">KM</span>
               </h2>

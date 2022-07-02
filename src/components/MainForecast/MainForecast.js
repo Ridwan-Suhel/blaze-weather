@@ -21,7 +21,7 @@ const MainForecast = ({
   const isFetched = fetchWeather?.cod === "404";
   return (
     <aside className="main-forecast md:w-2/4 lg:w-1/4 bg-white shadow min-h-screen rounded dark:bg-black dark:shadow-slate-500">
-      <div className="form-group flex items-center bg-base-100 px-4 py-1 border-b dark:border-slate-500">
+      <div className="form-group flex items-center bg-base-100 px-2 md:px-4 py-1 border-b dark:border-slate-800">
         <label htmlFor="searchInput">
           <SearchCircleIcon className="h-5 w-5 text-slate-500 rotate-[-90deg]" />
         </label>
@@ -44,7 +44,7 @@ const MainForecast = ({
       {isLoading ? (
         <>
           {!isFetched ? (
-            <div className="forecast-detail px-4 overflow-x-hidden dark:text-white">
+            <div className="forecast-detail  px-2 md:px-4 overflow-x-hidden dark:text-white">
               <div className="flex md:block items-center justify-center">
                 <div className="w-img">
                   <img

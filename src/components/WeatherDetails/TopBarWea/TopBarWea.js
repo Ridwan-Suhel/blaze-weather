@@ -13,7 +13,7 @@ const TopBarWea = ({
   isDark,
 }) => {
   return (
-    <div className="top-bar flex justify-between items-center pb-4 pt-1">
+    <div className="pt-5 md:pt-1 top-bar flex justify-between items-center pb-4 ">
       <ul className="w-modes flex justify-between items-center gap-5">
         <button
           title="Show Today's Data"
@@ -76,7 +76,9 @@ const TopBarWea = ({
         </button>
       </ul>
 
-      <ToggleTheme setDark={setDark} isDark={isDark} />
+      <div className="hidden md:block">
+        <ToggleTheme setDark={setDark} isDark={isDark} />
+      </div>
     </div>
   );
 };
