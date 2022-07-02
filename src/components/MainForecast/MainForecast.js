@@ -45,43 +45,48 @@ const MainForecast = ({
         <>
           {!isFetched ? (
             <div className="forecast-detail px-4 overflow-x-hidden dark:text-white">
-              <div className="w-img">
-                <img
-                  title={`Current weather is - ${weatherInfo?.main}`}
-                  className="ml-[-35px] mt-[-35px]"
-                  src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@4x.png`}
-                  alt="img"
-                />
-              </div>
+              <div className="flex md:block items-center justify-center">
+                <div className="w-img">
+                  <img
+                    title={`Current weather is - ${weatherInfo?.main}`}
+                    className="w-[120px] md:w-[200px] md:ml-[-35px] md:mt-[-35px]"
+                    src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@4x.png`}
+                    alt="img"
+                  />
+                </div>
 
-              <h2 className="text-5xl font-light mt-[-15px]">
-                {fetchWeather?.main?.temp.toFixed()}&deg;
-                <span className="text-3xl">
-                  {unit === "metric" || unit === "" ? "C" : "F"}
-                </span>
-              </h2>
-
-              <h2 className="text-2xl font-normal my-6">
-                {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("dddd")}{" "}
-                <span className="text-slate-500 font-light dark:text-slate-200">
-                  {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("LT")}
-                </span>
-              </h2>
-
-              <div className="more-info text-slate-500 dark:text-slate-400">
-                <div className="flex items-center gap-3">
-                  <BeakerIcon className="h-5 w-5" />{" "}
-                  <span>
-                    Feels Like {fetchWeather?.main?.feels_like}&deg;
+                <h2 className="text-5xl font-light mt-[-15px]">
+                  {fetchWeather?.main?.temp.toFixed()}&deg;
+                  <span className="text-3xl">
                     {unit === "metric" || unit === "" ? "C" : "F"}
                   </span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <CloudIcon className="h-5 w-5" />{" "}
-                  <span>Cloudy - {fetchWeather?.clouds?.all}%</span>
+                </h2>
+              </div>
+
+              <div className="sm:flex md:block justify-center gap-2">
+                <h2 className="text-center sm:text-left text-2xl font-normal md:my-6 start">
+                  {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("dddd")}{" "}
+                  <span className="text-slate-500 font-light dark:text-slate-200">
+                    {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("LT")}
+                  </span>
+                </h2>
+
+                <div className="more-info text-slate-500 dark:text-slate-400">
+                  <div className="my-1 sm:my-0 flex items-center justify-center sm:justify-start gap-3">
+                    <BeakerIcon className="h-5 w-5" />{" "}
+                    <span>
+                      Feels Like {fetchWeather?.main?.feels_like}&deg;
+                      {unit === "metric" || unit === "" ? "C" : "F"}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-center  sm:justify-start gap-3">
+                    <CloudIcon className="h-5 w-5" />{" "}
+                    <span>Cloudy - {fetchWeather?.clouds?.all}%</span>
+                  </div>
                 </div>
               </div>
-              <div className="font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden dark:bg-slate-900">
+
+              <div className="mb-4 md:mb-0 font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden dark:bg-slate-900">
                 <h2>
                   Weather Information:{" "}
                   <span className="text-gray-300">{weatherInfo?.main},</span>

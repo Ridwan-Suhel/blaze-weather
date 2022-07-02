@@ -101,7 +101,7 @@ const WeatherDetails = ({
           Today's Highlights
         </h2>
 
-        <div className="grid grid-cols-3 gap-4 mt-5">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
           {/* single box  */}
           <div
             className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
