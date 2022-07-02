@@ -3,7 +3,7 @@ import "./Header.css";
 
 const Header = () => {
   return (
-    <header className="py-4 bg-white border-b  dark:bg-slate-900 dark:border-slate-700">
+    <header className="py-4 bg-white border-b border-slate-100  dark:bg-slate-900 dark:border-slate-700">
       <div className="container mx-auto px-4 lg:px-0">
         <nav className="flex justify-between items-center">
           <h2 className="text-2xl text-white font-bold text-black logo dark:text-white">

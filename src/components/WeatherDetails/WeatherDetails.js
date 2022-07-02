@@ -11,6 +11,7 @@ import humidity from "../../../src/images/png/005-humidity.png";
 import pressure from "../../../src/images/png/006-atmospheric.png";
 import dew from "../../../src/images/png/dew.png";
 import TopBarWea from "./TopBarWea/TopBarWea";
+import moment from "moment-timezone";
 
 const WeatherDetails = ({
   fetchWeather,
@@ -40,6 +41,9 @@ const WeatherDetails = ({
   riseHours = riseHours ? riseHours : 12;
   riseMinutes = riseMinutes < 10 ? "0" + riseMinutes : riseMinutes;
   let riseStrTime = riseHours + ":" + riseMinutes + " " + riseAmpm;
+
+  const riseTime = dataDaily[0]?.sunrise;
+  const setTime = dataDaily[0]?.sunset;
   // =====================DATE & TIME END======================
 
   // =====================DATE & TIME======================
@@ -171,8 +175,11 @@ const WeatherDetails = ({
                 alt="sunrise"
               />
               <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
-                {riseStrTime}
+                {moment?.unix(riseTime)?.tz(timeZone)?.format("LT")}
               </h2>
+              {/* <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
+                {riseStrTime}
+              </h2> */}
             </div>
             <div className="mt-2 flex items-center gap-2">
               <img
@@ -181,7 +188,7 @@ const WeatherDetails = ({
                 alt="sunset"
               />
               <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
-                {strTime}
+                {moment?.unix(setTime)?.tz(timeZone)?.format("LT")}
               </h2>
             </div>
           </div>
