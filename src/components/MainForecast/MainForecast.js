@@ -15,29 +15,6 @@ const MainForecast = ({
   unit,
   timeZone,
 }) => {
-  // =====================DATE & TIME======================
-
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let d = new Date(fetchWeather?.dt * 1000);
-  let dayName = days[d.getDay()];
-
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  let ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  let strTime = hours + ":" + minutes + " " + ampm;
-  // =====================DATE & TIME END======================
-
   let descTxt = weatherInfo?.description;
   const desc = descTxt?.charAt(0)?.toUpperCase() + descTxt?.slice(1);
 

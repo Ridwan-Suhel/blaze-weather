@@ -47,8 +47,7 @@ const MainForecast = () => {
     fetchWeather?.coord?.lon,
   ]);
 
-  console.log(fetchWeather);
-
+  // =====================DATE & TIME======================
   let days = [
     "Sunday",
     "Monday",
@@ -69,6 +68,7 @@ const MainForecast = () => {
   hours = hours ? hours : 12;
   minutes = minutes < 10 ? "0" + minutes : minutes;
   let strTime = hours + ":" + minutes + " " + ampm;
+  // =====================DATE & TIME END======================
 
   let descTxt = weatherInfo?.description;
   const desc = descTxt?.charAt(0)?.toUpperCase() + descTxt?.slice(1);

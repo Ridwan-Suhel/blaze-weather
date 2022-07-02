@@ -31,32 +31,8 @@ const WeatherDetails = ({
   const lat = fetchWeather?.coord?.lat;
   const lon = fetchWeather?.coord?.lon;
 
-  // =====================DATE & TIME======================
-  let riseD = new Date(dataDaily[0]?.sunrise * 1000);
-
-  let riseHours = riseD.getHours();
-  let riseMinutes = riseD.getMinutes();
-  let riseAmpm = riseHours >= 12 ? "PM" : "AM";
-  riseHours = riseHours % 12;
-  riseHours = riseHours ? riseHours : 12;
-  riseMinutes = riseMinutes < 10 ? "0" + riseMinutes : riseMinutes;
-  let riseStrTime = riseHours + ":" + riseMinutes + " " + riseAmpm;
-
   const riseTime = dataDaily[0]?.sunrise;
   const setTime = dataDaily[0]?.sunset;
-  // =====================DATE & TIME END======================
-
-  // =====================DATE & TIME======================
-  let d = new Date(dataDaily[0]?.sunset * 1000);
-
-  let hours = d.getHours();
-  let minutes = d.getMinutes();
-  let ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  let strTime = hours + ":" + minutes + " " + ampm;
-  // =====================DATE & TIME END======================
 
   useEffect(() => {
     const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${
@@ -74,7 +50,7 @@ const WeatherDetails = ({
     };
 
     loadData();
-  }, [lat, lon, unit]);
+  }, [lat, lon, unit, setTimeZone]);
 
   const darkThemeBoxColor =
     "dark:bg-slate-900 dark:shadow-slate-500 dark:text-slate-300";
@@ -177,9 +153,6 @@ const WeatherDetails = ({
               <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
                 {moment?.unix(riseTime)?.tz(timeZone)?.format("LT")}
               </h2>
-              {/* <h2 className="text-xl text-slate-900 font-medium dark:text-slate-300">
-                {riseStrTime}
-              </h2> */}
             </div>
             <div className="mt-2 flex items-center gap-2">
               <img

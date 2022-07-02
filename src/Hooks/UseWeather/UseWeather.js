@@ -13,7 +13,6 @@ const UseWeather = (url) => {
           setFetchWeather(data);
           setWeatherInfo(data?.weather[0]);
           setLoading(true);
-          console.log(data);
         });
     };
     fetchData();
