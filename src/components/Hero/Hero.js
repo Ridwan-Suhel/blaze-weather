@@ -5,6 +5,7 @@ import WeatherDetails from "../WeatherDetails/WeatherDetails";
 
 const Hero = () => {
   const [search, setSearch] = useState("");
+  const [timeZone, setTimeZone] = useState("");
   const [unit, setUnit] = useState("");
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${
     search || "dhaka"
@@ -21,11 +22,14 @@ const Hero = () => {
           weatherInfo={weatherInfo}
           isLoading={isLoading}
           unit={unit}
+          timeZone={timeZone}
         />
         <WeatherDetails
           setUnit={setUnit}
           unit={unit}
           fetchWeather={fetchWeather}
+          setTimeZone={setTimeZone}
+          timeZone={timeZone}
         />
       </div>
     </section>

@@ -5,6 +5,7 @@ import {
 } from "@heroicons/react/outline";
 import Loading from "../Loading/Loading";
 import NotFound from "../NotFound/NotFound";
+import moment from "moment-timezone";
 const MainForecast = ({
   search,
   fetchWeather,
@@ -12,8 +13,10 @@ const MainForecast = ({
   weatherInfo,
   isLoading,
   unit,
+  timeZone,
 }) => {
   // =====================DATE & TIME======================
+
   let days = [
     "Sunday",
     "Monday",
@@ -81,10 +84,21 @@ const MainForecast = ({
                 </span>
               </h2>
 
-              <h2 className="text-2xl font-normal my-6">
+              {/* Geting Time  */}
+              {/* <h2 className="text-2xl font-normal my-6">
                 {dayName},{" "}
                 <span className="text-slate-500 font-light dark:text-slate-200">
                   {strTime}
+                </span>
+              </h2> */}
+              <h2 className="text-2xl font-normal my-6">
+                {/* {dayName},{" "} */}
+                {moment
+                  ?.unix(fetchWeather?.dt)
+                  ?.tz(timeZone)
+                  ?.format("dddd")}{" "}
+                <span className="text-slate-500 font-light dark:text-slate-200">
+                  {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("LT")}
                 </span>
               </h2>
 

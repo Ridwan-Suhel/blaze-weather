@@ -12,7 +12,13 @@ import pressure from "../../../src/images/png/006-atmospheric.png";
 import dew from "../../../src/images/png/dew.png";
 import TopBarWea from "./TopBarWea/TopBarWea";
 
-const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
+const WeatherDetails = ({
+  fetchWeather,
+  setUnit,
+  unit,
+  setTimeZone,
+  timeZone,
+}) => {
   const [toggleState, setToggleState] = useState(true);
   const [dataHourly, setDataHourly] = useState({});
   const [dataDaily, setDataDaily] = useState({});
@@ -56,9 +62,10 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
       await fetch(url)
         .then((res) => res.json())
         .then((d) => {
-          setDataHourly(d.hourly.slice(0, 5));
+          setDataHourly(d.hourly.slice(1, 6));
           setDataDaily(d.daily.slice(0, 5));
           setLoading(true);
+          setTimeZone(d?.timezone);
         });
     };
 
@@ -84,13 +91,17 @@ const WeatherDetails = ({ fetchWeather, setUnit, unit }) => {
       {loading ? (
         <div className="w-single-card-wrpper grid grid-cols-5 gap-4">
           {toggleState
-            ? dataHourly?.map((data) => (
-                <HourlyCard
-                  key={data.dt}
-                  data={data}
-                  unitActiveClass={unitActiveClass}
-                />
-              ))
+            ? dataHourly?.map((data) => {
+                if (dataHourly.length > 0) {
+                  return (
+                    <HourlyCard
+                      key={data.dt}
+                      data={data}
+                      unitActiveClass={unitActiveClass}
+                    />
+                  );
+                }
+              })
             : dataDaily?.map((data) => (
                 <DailyCard
                   key={data.dt}
