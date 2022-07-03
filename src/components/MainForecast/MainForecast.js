@@ -20,7 +20,7 @@ const MainForecast = ({
 
   const isFetched = fetchWeather?.cod === "404";
   return (
-    <aside className="main-forecast md:w-2/4 lg:w-1/4 bg-white shadow min-h-screen rounded dark:bg-black dark:shadow-slate-500">
+    <aside className="main-forecast md:w-2/4 lg:w-1/4 h-auto lg:h-screen bg-white shadow rounded dark:bg-black dark:shadow-slate-500">
       <div className="form-group flex items-center bg-base-100 px-2 md:px-4 py-1 border-b dark:border-slate-800">
         <label htmlFor="searchInput">
           <SearchCircleIcon className="h-5 w-5 text-slate-500 rotate-[-90deg]" />
@@ -45,17 +45,17 @@ const MainForecast = ({
         <>
           {!isFetched ? (
             <div className="forecast-detail  px-2 md:px-4 overflow-x-hidden dark:text-white">
-              <div className="flex md:block items-center justify-center">
+              <div className="sm:flex md:block items-center justify-center">
                 <div className="w-img">
                   <img
                     title={`Current weather is - ${weatherInfo?.main}`}
-                    className="w-[120px] md:w-[200px] md:ml-[-35px] md:mt-[-35px]"
+                    className="w-[120px] mx-auto sm:mx-start md:w-[200px] md:ml-[-35px] md:mt-[-35px]"
                     src={`http://openweathermap.org/img/wn/${weatherInfo?.icon}@4x.png`}
                     alt="img"
                   />
                 </div>
 
-                <h2 className="text-5xl font-light mt-[-15px]">
+                <h2 className="mt-[-20px] mb-4 sm:mb-0 sm:mt-[-15px] text-center sm:text-start text-5xl font-light ">
                   {fetchWeather?.main?.temp.toFixed()}&deg;
                   <span className="text-3xl">
                     {unit === "metric" || unit === "" ? "C" : "F"}
@@ -65,7 +65,8 @@ const MainForecast = ({
 
               <div className="sm:flex md:block justify-center gap-2">
                 <h2 className="text-center sm:text-left text-2xl font-normal md:my-6 start">
-                  {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("dddd")}{" "}
+                  {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("dddd")}
+                  ,{" "}
                   <span className="text-slate-500 font-light dark:text-slate-200">
                     {moment?.unix(fetchWeather?.dt)?.tz(timeZone)?.format("LT")}
                   </span>
@@ -86,7 +87,7 @@ const MainForecast = ({
                 </div>
               </div>
 
-              <div className="mb-4 md:mb-0 font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden dark:bg-slate-900">
+              <div className="border border-slate-600 mb-4 md:mb-0 font-light mt-6 bg-black p-5 text-white rounded-lg relative overflow-hidden dark:bg-slate-900">
                 <h2>
                   Weather Information:{" "}
                   <span className="text-gray-300">{weatherInfo?.main},</span>

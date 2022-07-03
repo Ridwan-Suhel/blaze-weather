@@ -104,7 +104,7 @@ const WeatherDetails = ({
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
           {/* single box  */}
           <div
-            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+            className={`border border-slate-500 box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
           >
             <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               UV Index
@@ -122,7 +122,7 @@ const WeatherDetails = ({
           </div>
           {/* single box  */}
           <div
-            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+            className={`border border-slate-500 box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
           >
             <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               Wind Status
@@ -141,7 +141,7 @@ const WeatherDetails = ({
           </div>
           {/* single box  */}
           <div
-            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+            className={`border border-slate-500 box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
           >
             <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               Sunrise &amp; Sunset
@@ -169,7 +169,7 @@ const WeatherDetails = ({
           </div>
           {/* single box  */}
           <div
-            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+            className={`border border-slate-500 box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
           >
             <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               Humidity
@@ -188,7 +188,7 @@ const WeatherDetails = ({
           </div>
           {/* single box  */}
           <div
-            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+            className={`border border-slate-500 box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
           >
             <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               Pressure
@@ -207,7 +207,7 @@ const WeatherDetails = ({
           </div>
           {/* single box  */}
           <div
-            className={`box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
+            className={`border border-slate-500 box p-4 rounded-lg shadow bg-white ${darkThemeBoxColor}`}
           >
             <h2 className="text-lg text-slate-500 font-medium dark:text-slate-300">
               Dew Point
