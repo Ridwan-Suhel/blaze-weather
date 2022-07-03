@@ -70,7 +70,7 @@ const WeatherDetails = ({
 
       <div className="overflow-x-scroll lg:overflow-x-auto">
         {loading ? (
-          <div className="w-[800px] lg:w-full md:gap-1 wea-single-card-wrpper grid grid-cols-5 gap-4 py-4">
+          <div className="w-[800px] lg:w-full gap-4 lg:gap-4 md:gap-1 wea-single-card-wrpper grid grid-cols-5  py-4">
             {toggleState
               ? dataHourly?.map((data) => {
                   if (dataHourly.length > 0) {

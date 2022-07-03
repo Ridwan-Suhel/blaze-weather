@@ -7,7 +7,7 @@ const DailyCard = ({ data, unitActiveClass }) => {
   const max = maxTemp.toString().slice(0, 2);
 
   return (
-    <div className="border border-slate-500 transition-all duration-500 md:w-[150px] card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900  dark:text-slate-300">
+    <div className="border border-slate-500 md:w-[150px] lg:w-auto transition-all duration-500 card p-4 rounded-lg shadow text-center bg-white dark:bg-slate-900  dark:text-slate-300">
       <h2 className="text-xl">{moment?.unix(data.dt)?.format("ddd")}</h2>
       <div className="w-img text-center my-4">
         <img
